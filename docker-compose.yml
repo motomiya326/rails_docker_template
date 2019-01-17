@@ -19,8 +19,6 @@ services:
     image: "mysql:5.7"
     environment:
       - "MYSQL_ALLOW_EMPTY_PASSWORD=1"
-#      - "POSTGRES_USER=root"
-#      - "POSTGRES_PASSWORD=password"
     volumes_from:
       - data
     ports:
