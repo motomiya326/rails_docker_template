@@ -9,28 +9,18 @@ services:
       - "./.env.dev"
     volumes:
       - ".:/app"
-    volumes_from:
-      - data
     ports:
       - "3000:3000"
-    depends_on:
+    links:
       - db
   db:
     image: "mysql:5.7"
     environment:
       - "MYSQL_ALLOW_EMPTY_PASSWORD=1"
-    volumes_from:
-      - data
+    volumes:
+      - "db-volume:/var/lib/mysql"
     ports:
       - "13307:3306"
-  data:
-    image: "busybox"
-    volumes:
-      - "db:/var/lib/mysql"
-      - "bundle:/usr/local/bundle"
 
 volumes:
-  db:
-    driver: local
-  bundle:
-    driver: local
+  db-volume:
