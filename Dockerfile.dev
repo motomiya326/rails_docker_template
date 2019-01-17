@@ -1,7 +1,9 @@
 FROM node:10.6.0 as node
-FROM ruby:2.5.1
+FROM ruby:2.5.3
 
-ENV LANG C.UTF-8
+ENV LC_ALL=C.UTF-8 \
+    LANG=C.UTF-8 \
+    TZ=Asia/Tokyo
 
 RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends \
